@@ -72,45 +72,45 @@ def get_date(date):
             return datetime.strptime(date, pattern).date()
         except:
             pass
-def send_update():
-    port,smtp_server,host,username,paswd=get_details()
-    sender_email = "xyz@gmail.com"
-    receiver_email ="abc@gmail.com"
-    password = "adsfaegrh"
-    message = MIMEMultipart("alternative")
-    date=datetime.today()
-    message["Subject"] = "Update on attachment downloader "+str(date)
-    message["From"] = sender_email
-    message["To"] = receiver_email
-    text = """\
-    Here is your update on attachment downloaded and possible errors for today():
-    """
-    html = """\
-    <html>
-    <body>
-        <p>Heyo A,<br>
-        Developed by Adi<br>
-        <a href="https://github.com/adityaSTL">github repo</a> 
-        Thank you!
-        </p>
+# def send_update():
+#     port,smtp_server,host,username,paswd=get_details()
+#     sender_email = "xyz@gmail.com"
+#     receiver_email ="abc@gmail.com"
+#     password = "adsfaegrh"
+#     message = MIMEMultipart("alternative")
+#     date=datetime.today()
+#     message["Subject"] = "Update on attachment downloader "+str(date)
+#     message["From"] = sender_email
+#     message["To"] = receiver_email
+#     text = """\
+#     Here is your update on attachment downloaded and possible errors for today():
+#     """
+#     html = """\
+#     <html>
+#     <body>
+#         <p>Heyo A,<br>
+#         Developed by Adi<br>
+#         <a href="https://github.com/adityaSTL">github repo</a> 
+#         Thank you!
+#         </p>
         
-        """+"Here is your update on attachment downloaded and possible errors for today():"+"\nScript ran @:"""+str(datetime.now())+"\nRun by:"+str(os.getlogin())+"\nLogs: "+log+"""
-        <h2>
-        Test
-        </h2>
-    </body>
-    </html>
-    """
-    part1 = MIMEText(text, "plain")
-    part2 = MIMEText(html, "html")
-    message.attach(part1)
-    message.attach(part2)
-    context = ssl.create_default_context()
-    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-        server.login(sender_email, password)
-        server.sendmail(
-            sender_email, receiver_email, message.as_string()
-        )
+#         """+"Here is your update on attachment downloaded and possible errors for today():"+"\nScript ran @:"""+str(datetime.now())+"\nRun by:"+str(os.getlogin())+"\nLogs: "+log+"""
+#         <h2>
+#         Test
+#         </h2>
+#     </body>
+#     </html>
+#     """
+#     part1 = MIMEText(text, "plain")
+#     part2 = MIMEText(html, "html")
+#     message.attach(part1)
+#     message.attach(part2)
+#     context = ssl.create_default_context()
+#     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+#         server.login(sender_email, password)
+#         server.sendmail(
+#             sender_email, receiver_email, message.as_string()
+#         )
 def get_details():
     port=465
     smtp_server = "smtp.gmail.com"
